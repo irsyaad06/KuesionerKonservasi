@@ -34,7 +34,27 @@ class Kuesioner1 extends Model
         'q18',
         'q19',
         'q20',
-        'ket',
+        'ket1',
+        'ket2',
+        'ket3',
+        'ket4',
+        'ket5',
+        'ket6',
+        'ket7',
+        'ket8',
+        'ket9',
+        'ket10',
+        'ket11',
+        'ket12',
+        'ket13',
+        'ket14',
+        'ket15',
+        'ket16',
+        'ket17',
+        'ket18',
+        'ket19',
+        'ket20',
+        
 
     ];
 }
