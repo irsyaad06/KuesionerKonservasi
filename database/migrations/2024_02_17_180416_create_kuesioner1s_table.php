@@ -35,7 +35,26 @@ return new class extends Migration
             $table->string('q18');
             $table->string('q19');
             $table->string('q20');
-            $table->string('ket');
+            $table->string('ket1');
+            $table->string('ket2');
+            $table->string('ket3');
+            $table->string('ket4');
+            $table->string('ket5');
+            $table->string('ket6');
+            $table->string('ket7');
+            $table->string('ket8');
+            $table->string('ket9');
+            $table->string('ket10');
+            $table->string('ket11');
+            $table->string('ket12');
+            $table->string('ket13');
+            $table->string('ket14');
+            $table->string('ket15');
+            $table->string('ket16');
+            $table->string('ket17');
+            $table->string('ket18');
+            $table->string('ket19');
+            $table->string('ket20');
             $table->timestamps();
         });
     }
