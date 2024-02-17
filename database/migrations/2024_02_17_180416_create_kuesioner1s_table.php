@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('q18');
             $table->string('q19');
             $table->string('q20');
+            $table->string('ket');
             $table->timestamps();
         });
     }
