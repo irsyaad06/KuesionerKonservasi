@@ -31,6 +31,11 @@ class Kuesioner1Resource extends Resource
 
     protected static ?string $pluralModelLabel = 'Kusioner 1';
 
+    public static function getTotalCount(): int
+{
+    return Kuesioner1::count();
+}
+
     public static function form(Form $form): Form
     {
         return $form
