@@ -59,8 +59,8 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah mengetahui adanya lembaga konservasi penyu? '),
-                        TextInput::make('ket1')
-                            ->required()
+                        TextArea::make('ket1')
+                            ->autosize()
                             ->label('Keterangan')
                             ->placeholder('Keterangan'),
                         Radio::make('q2')
@@ -70,7 +70,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah mengetahui kapan lembaga konservasi didirikan? '),
-
+                        TextArea::make('ket2')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q3')
                             ->options([
                                 'Ya' => 'Ya',
@@ -78,7 +81,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah mengetahui cakupan wilayah konservasi? '),
-
+                        TextArea::make('ket3')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q4')
                             ->options([
                                 'Ya' => 'Ya',
@@ -86,7 +92,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Pernahkah melihat/menyaksikan langsung kegiatan konservasi? '),
-
+                        TextArea::make('ket4')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q5')
                             ->options([
                                 'Ya' => 'Ya',
@@ -94,7 +103,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah mengetahui alasan didirikannya lembaga konservasi? '),
-
+                        TextArea::make('ket5')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q6')
                             ->options([
                                 'Ya' => 'Ya',
@@ -102,7 +114,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah mengetahui cara kerja lembaga konservasi? '),
-
+                        TextArea::make('ket6')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q7')
                             ->options([
                                 'Ya' => 'Ya',
@@ -110,6 +125,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah mengetahui lembaga konservasi lain? '),
+                        TextArea::make('ket7')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                     ])
                     ->columns(1),
 
@@ -126,7 +145,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah memiliki teman/keluarga yang terlibat kegiatan konservasi? '),
-
+                        TextArea::make('ket8')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q9')
                             ->options([
                                 'Ya' => 'Ya',
@@ -134,7 +156,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah pernah mendapat undangan kegiatan konservasi? '),
-
+                        TextArea::make('ket9')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q10')
                             ->options([
                                 'Ya' => 'Ya',
@@ -142,7 +167,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah pernah terlibat kegiatan konservasi? '),
-
+                        TextArea::make('ket10')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q11')
                             ->options([
                                 'Ya' => 'Ya',
@@ -150,7 +178,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah punya minat bergabung dalam kegiatan konservasi? '),
-
+                        TextArea::make('ket11')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q12')
                             ->options([
                                 'Ya' => 'Ya',
@@ -158,7 +189,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah mengetahui adanya kegiatan rutin konservasi? '),
-
+                        TextArea::make('ket12')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q13')
                             ->options([
                                 'Ya' => 'Ya',
@@ -166,7 +200,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah mengetahui waktu & lokasi diselenggarakan? '),
-
+                        TextArea::make('ket13')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q14')
                             ->options([
                                 'Ya' => 'Ya',
@@ -174,7 +211,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah kegiatan konservasi berkesan? '),
-
+                        TextArea::make('ket14')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q15')
                             ->options([
                                 'Ya' => 'Ya',
@@ -182,6 +222,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah menyetujui keberadaan lembaga konservasi? '),
+                        TextArea::make('ket15')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                     ])
                     ->columns(1),
                 Section::make('Form C')
@@ -198,8 +242,11 @@ class Kuesioner1Resource extends Resource
                                 '5' => '5. Sangat Positif',
                             ])
                             ->required()
-
                             ->label('Apa tanggapan mengenai kegiatan konservasi yang telah diadakan? '),
+                        TextArea::make('ket16')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
 
                         Radio::make('q17')
                             ->options([
@@ -211,7 +258,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Seberapa efektif keterlibatan masyarakat sekitar? '),
-
+                        TextArea::make('ket17')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q18')
                             ->options([
                                 '1' => '1. Sangat Negatif',
@@ -222,7 +272,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Adakah gangguan yang dialami selama ini terkait keberadaan lembaga konservasi? '),
-
+                        TextArea::make('ket18')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q19')
                             ->options([
                                 '1' => '1. Sangat Negatif',
@@ -233,7 +286,10 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Apakah memiliki usulan atau harapan terhadap kegiatan konservasi? '),
-
+                        TextArea::make('ket19')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                         Radio::make('q20')
                             ->options([
                                 '1' => '1. Sangat Negatif',
@@ -244,14 +300,12 @@ class Kuesioner1Resource extends Resource
                             ])
                             ->required()
                             ->label('Adakah keuntungan yang didapat selama ini terkait keberadaan lembaga konservasi? '),
+                        TextArea::make('ket20')
+                            ->autosize()
+                            ->label('Keterangan')
+                            ->placeholder('Keterangan'),
                     ])
                     ->columns(1),
-
-                Textarea::make('ket1')
-                    ->autosize()
-                    ->label('Ketarangan')
-                    ->required(),
-
 
             ]);
     }
