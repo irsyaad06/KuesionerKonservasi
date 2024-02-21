@@ -6,6 +6,7 @@ use App\Filament\Resources\Kuesioner1Resource\Pages;
 use App\Filament\Resources\Kuesioner1Resource\RelationManagers;
 use App\Models\Kuesioner1;
 use Doctrine\DBAL\Schema\Schema;
+use Filament\Actions\Exports\Enums\ExportFormat;
 use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Radio;
@@ -22,6 +23,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Ramsey\Uuid\Guid\Fields;
+use Filament\Tables\Actions\HeaderActionsPosition;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 class Kuesioner1Resource extends Resource
 {
@@ -451,13 +455,22 @@ class Kuesioner1Resource extends Resource
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
+            ->headerActionsPosition(HeaderActionsPosition::Bottom)
+            ->headerActions([
+                ExportAction::make()
+                    ->label('Export')
+                    ->exports([
+                        ExcelExport::make()
+                            ->fromForm()
+                    ])
+
+            ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
-
     public static function getRelations(): array
     {
         return [
