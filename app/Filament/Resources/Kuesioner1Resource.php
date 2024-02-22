@@ -20,9 +20,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Ramsey\Uuid\Guid\Fields;
 use Filament\Tables\Actions\HeaderActionsPosition;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
@@ -458,11 +455,27 @@ class Kuesioner1Resource extends Resource
             ->headerActionsPosition(HeaderActionsPosition::Bottom)
             ->headerActions([
                 ExportAction::make()
-                    ->label('Export')
+                    ->label('Excel')
+                    ->icon('mdi-file-excel-outline')
+                    ->color('success')
+                    ->exports([
+                        ExcelExport::make()
+                            ->fromForm()
+                    ]),
+                ExportAction::make()
+                ->exports([
+                  ExcelExport::make()->withWriterType(\Maatwebsite\Excel\Excel::CSV),
+                  ])
+                    ->label('CSV')
+                    ->icon('mdi-file-document-outline')
+                    ->color('danger')
                     ->exports([
                         ExcelExport::make()
                             ->fromForm()
                     ])
+                    
+                    
+                    
 
             ])
             ->bulkActions([
