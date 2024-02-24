@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\Kuesioner1Resource\Pages;
 use App\Filament\Resources\Kuesioner1Resource\RelationManagers;
+use App\Models\Daerah;
 use App\Models\Kuesioner1;
 use Doctrine\DBAL\Schema\Schema;
 use Filament\Actions\Exports\Enums\ExportFormat;
@@ -24,13 +25,24 @@ use Filament\Tables\Actions\HeaderActionsPosition;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
+use Filament\Forms\Components\Actions;
+use Filament\Forms\Components\Actions\Action;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Set;
+
+use App\Filament\Resources\Closure;
+
 class Kuesioner1Resource extends Resource
 {
     protected static ?string $model = Kuesioner1::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'mdi-form-select';
 
-    protected static ?string $pluralModelLabel = 'Kusioner 1';
+    protected static ?string $navigationGroup = 'Form';
+
+    protected static ?int $navigationSort = 0;
+
+    protected static ?string $pluralModelLabel = 'Kuesioner Observasi';
 
     public static function getTotalCount(): int
 {
@@ -48,17 +60,66 @@ class Kuesioner1Resource extends Resource
                         TextInput::make('nama')
                             ->required()
                             ->placeholder('Masukkan Nama Responden !'),
-                        Radio::make('role')
-                            ->options([
-                                'Petugas' => 'Petugas',
-                                'Masyarakat' => 'Masyarakat',
-                            ])
+                        Select::make('daerah_id')
                             ->required()
-                            ->inline()
-                            ->inlineLabel(false),
+                            ->label('Relasi Daerah')
+                            ->placeholder('-- Pilih Daerah --')  
+                            ->relationship('daerah','nama')
+                            ->native(false),
+
+                            
+                        Select::make('role_id')
+                            ->required()
+                            ->label('Role Responden')
+                            ->placeholder('-- Pilih Daerah --')  
+                            ->relationship('role','nama_role')
+                            ->native(false),
+                            
+                            
                     ])
-                    ->columns(1),
-                Section::make('Form A')
+                    ->columns(2),
+                Section::make('Shortcut Button')
+                    ->description('Jika Koresponden tidak mengetahui "..." maka klik button dibawah')
+                    ->collapsed()
+                    ->schema([
+                        Actions::make([
+                            Action::make('No')
+                                ->label('Tidak Mengetahui')
+                                ->icon('mdi-exclamation-thick')
+                                ->action(function (Set $set) {
+                                    $set('q1', 'Tidak');
+                                    $set('q2', 'Tidak');
+                                    $set('q3', 'Tidak');
+                                    $set('q4', 'Tidak');
+                                    $set('q5', 'Tidak');
+                                    $set('q6', 'Tidak');
+                                    $set('q7', 'Tidak');
+                                    $set('q8', 'Tidak');
+                                    $set('q9', 'Tidak');
+                                    $set('q10', 'Tidak');
+                                    $set('q11', 'Tidak');
+                                    $set('q12', 'Tidak');
+                                    $set('q13', 'Tidak');
+                                    $set('q14', 'Tidak');
+                                    $set('ket1', 'NIHIL');
+                                    $set('ket2', 'NIHIL');
+                                    $set('ket3', 'NIHIL');
+                                    $set('ket4', 'NIHIL');
+                                    $set('ket5', 'NIHIL');
+                                    $set('ket6', 'NIHIL');
+                                    $set('ket7', 'NIHIL');
+                                    $set('ket8', 'NIHIL');
+                                    $set('ket9', 'NIHIL');
+                                    $set('ket10', 'NIHIL');
+                                    $set('ket11', 'NIHIL');
+                                    $set('ket12', 'NIHIL');
+                                    $set('ket13', 'NIHIL');
+                                    $set('ket14', 'NIHIL');
+                                }),
+                        ]),
+                    ])
+                    ->columns(2),
+                Section::make('Form A (Terbuka)')
                     ->description('')
                     ->collapsed()
                     ->schema([
@@ -174,7 +235,7 @@ class Kuesioner1Resource extends Resource
                     ->columns(1),
 
 
-                Section::make('Form B')
+                Section::make('Form B (Terbuka)')
                     ->description('')
                     ->collapsed()
                     ->schema([
@@ -288,7 +349,7 @@ class Kuesioner1Resource extends Resource
                     ->columns(1),
 
 
-                Section::make('Form C')
+                Section::make('Form C (Tertutup)')
                     ->description('')
                     ->collapsed()
                     ->schema([
@@ -416,14 +477,29 @@ class Kuesioner1Resource extends Resource
             ]);
     }
 
+    
+
+
     public static function table(Table $table): Table
     {
         return $table
-            // ->defaultGroup('role')
+            // ->defaultGroup('role_id')
+       
             ->groups([
-                Group::make('role')
+                Group::make('role.nama_role')
                     ->titlePrefixedWithLabel(false)
-                    ->label('Responden')
+                    ->label('Role')
+                    ->collapsible(),
+                Group::make('daerah.nama')
+                    ->titlePrefixedWithLabel(false)
+                    ->label('Daerah')
+                    ->collapsible(),
+                Group::make('created_at')
+                    ->date()
+                    ->label('Tanggal diinput ')
+                    ->collapsible(),
+    
+
             ])
             ->columns([
                 TextColumn::make('No')
@@ -431,21 +507,24 @@ class Kuesioner1Resource extends Resource
                 TextColumn::make('nama')
                     ->label('Nama Responden')
                     ->searchable(),
-                TextColumn::make('role')
+                TextColumn::make('daerah.nama')
+                    ->label('Daerah')
+                    ->searchable(),
+                TextColumn::make('role.nama_role')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'Petugas' => 'success',
-                        'Masyarakat' => 'primary',
-                    })
+                    // ->color(fn (string $state): string => match ($state) {
+                    //     'Petugas' => 'success',
+                    //     'Pengunjung' => 'danger',
+                    //     'Masyarakat ' => 'primary',
+                    // })
                     ->searchable()
                     ->alignCenter(),
             ])
             ->filters([
-                SelectFilter::make('role')
-                    ->options([
-                        'Petugas' => 'Petugas',
-                        'Masyarakat' => 'Masyarakat',
-                    ])
+                SelectFilter::make('role_id')
+                    ->relationship('role','nama_role'),
+                    SelectFilter::make('daerah_id')
+                    ->relationship('daerah','nama')
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

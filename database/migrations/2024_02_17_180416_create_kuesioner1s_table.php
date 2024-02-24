@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('kuesioner1', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('role');
+            $table->foreignId('daerah_id');
+            $table->foreignId('role_id');
             $table->string('q1');
             $table->string('q2');
             $table->string('q3');

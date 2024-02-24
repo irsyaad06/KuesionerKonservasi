@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Kuesioner1 extends Model
 {
@@ -13,7 +14,8 @@ class Kuesioner1 extends Model
     protected $fillable = [
 
         'nama',
-        'role',
+        'role_id',
+        'daerah_id',
         'q1',
         'q2',
         'q3',
@@ -57,4 +59,14 @@ class Kuesioner1 extends Model
         
 
     ];
+
+    public function daerah()
+    {
+        return $this->belongsTo(Daerah::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }
