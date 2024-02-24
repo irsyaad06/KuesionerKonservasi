@@ -42,7 +42,7 @@ class Kuesioner1Resource extends Resource
 
     protected static ?int $navigationSort = 0;
 
-    protected static ?string $pluralModelLabel = 'Form';
+    protected static ?string $pluralModelLabel = 'Kuesioner Observasi';
 
     public static function getTotalCount(): int
 {
@@ -484,13 +484,21 @@ class Kuesioner1Resource extends Resource
     {
         return $table
             // ->defaultGroup('role_id')
+       
             ->groups([
                 Group::make('role.nama_role')
                     ->titlePrefixedWithLabel(false)
-                    ->label('Responden'),
+                    ->label('Role')
+                    ->collapsible(),
                 Group::make('daerah.nama')
                     ->titlePrefixedWithLabel(false)
                     ->label('Daerah')
+                    ->collapsible(),
+                Group::make('created_at')
+                    ->date()
+                    ->label('Tanggal diinput ')
+                    ->collapsible(),
+    
 
             ])
             ->columns([
@@ -504,17 +512,19 @@ class Kuesioner1Resource extends Resource
                     ->searchable(),
                 TextColumn::make('role.nama_role')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'Petugas' => 'success',
-                        'Pengunjung' => 'danger',
-                        'Masyarakat Lokal' => 'primary',
-                    })
+                    // ->color(fn (string $state): string => match ($state) {
+                    //     'Petugas' => 'success',
+                    //     'Pengunjung' => 'danger',
+                    //     'Masyarakat ' => 'primary',
+                    // })
                     ->searchable()
                     ->alignCenter(),
             ])
             ->filters([
                 SelectFilter::make('role_id')
-                    ->relationship('role','nama_role')
+                    ->relationship('role','nama_role'),
+                    SelectFilter::make('daerah_id')
+                    ->relationship('daerah','nama')
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
