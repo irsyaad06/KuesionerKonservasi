@@ -14,7 +14,7 @@ class Kuesioner1 extends Model
     protected $fillable = [
 
         'nama',
-        'role',
+        'role_id',
         'daerah_id',
         'q1',
         'q2',
@@ -63,5 +63,10 @@ class Kuesioner1 extends Model
     public function daerah()
     {
         return $this->belongsTo(Daerah::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }

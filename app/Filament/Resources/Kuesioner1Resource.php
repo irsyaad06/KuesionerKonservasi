@@ -63,21 +63,17 @@ class Kuesioner1Resource extends Resource
                         Select::make('daerah_id')
                             ->required()
                             ->label('Relasi Daerah')
-                            ->placeholder('-- Pilih Daerah --')
-                            // ->options(function () {
-                            //     return Daerah::all()->pluck('nama', 'id');
-                            // })
-                            ->relationship('daerah','nama'),
+                            ->placeholder('-- Pilih Daerah --')  
+                            ->relationship('daerah','nama')
+                            ->native(false),
 
                             
-                        Radio::make('role')
-                            ->options([
-                                'Petugas' => 'Petugas',
-                                'Pengunjung' => 'Pengunjung',
-                                'Masyarakat' => 'Masyarakat',
-                            ])
+                        Select::make('role_id')
                             ->required()
-                            ->inlineLabel(false),
+                            ->label('Role Responden')
+                            ->placeholder('-- Pilih Daerah --')  
+                            ->relationship('role','nama_role')
+                            ->native(false),
                             
                             
                     ])
@@ -487,11 +483,15 @@ class Kuesioner1Resource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            // ->defaultGroup('role')
+            // ->defaultGroup('role_id')
             ->groups([
-                Group::make('role')
+                Group::make('role.nama_role')
                     ->titlePrefixedWithLabel(false)
-                    ->label('Responden')
+                    ->label('Responden'),
+                Group::make('daerah.nama')
+                    ->titlePrefixedWithLabel(false)
+                    ->label('Daerah')
+
             ])
             ->columns([
                 TextColumn::make('No')
@@ -502,22 +502,19 @@ class Kuesioner1Resource extends Resource
                 TextColumn::make('daerah.nama')
                     ->label('Daerah')
                     ->searchable(),
-                TextColumn::make('role')
+                TextColumn::make('role.nama_role')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'Petugas' => 'success',
                         'Pengunjung' => 'danger',
-                        'Masyarakat' => 'primary',
+                        'Masyarakat Lokal' => 'primary',
                     })
                     ->searchable()
                     ->alignCenter(),
             ])
             ->filters([
-                SelectFilter::make('role')
-                    ->options([
-                        'Petugas' => 'Petugas',
-                        'Masyarakat' => 'Masyarakat',
-                    ])
+                SelectFilter::make('role_id')
+                    ->relationship('role','nama_role')
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
