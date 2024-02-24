@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\Kuesioner1Resource\Pages;
 use App\Filament\Resources\Kuesioner1Resource\RelationManagers;
+use App\Models\Daerah;
 use App\Models\Kuesioner1;
 use Doctrine\DBAL\Schema\Schema;
 use Filament\Actions\Exports\Enums\ExportFormat;
@@ -26,15 +27,22 @@ use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Actions\Action;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Set;
+
+use App\Filament\Resources\Closure;
 
 class Kuesioner1Resource extends Resource
 {
     protected static ?string $model = Kuesioner1::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'mdi-form-select';
 
-    protected static ?string $pluralModelLabel = 'Kusioner 1';
+    protected static ?string $navigationGroup = 'Form';
+
+    protected static ?int $navigationSort = 0;
+
+    protected static ?string $pluralModelLabel = 'Form';
 
     public static function getTotalCount(): int
 {
@@ -52,7 +60,16 @@ class Kuesioner1Resource extends Resource
                         TextInput::make('nama')
                             ->required()
                             ->placeholder('Masukkan Nama Responden !'),
+                        Select::make('daerah_id')
+                            ->required()
+                            ->label('Relasi Daerah')
+                            ->placeholder('-- Pilih Daerah --')
+                            // ->options(function () {
+                            //     return Daerah::all()->pluck('nama', 'id');
+                            // })
+                            ->relationship('daerah','nama'),
 
+                            
                         Radio::make('role')
                             ->options([
                                 'Petugas' => 'Petugas',
@@ -60,11 +77,11 @@ class Kuesioner1Resource extends Resource
                                 'Masyarakat' => 'Masyarakat',
                             ])
                             ->required()
-                            ->inline()
                             ->inlineLabel(false),
                             
+                            
                     ])
-                    ->columns(1),
+                    ->columns(2),
                 Section::make('Shortcut Button')
                     ->description('Jika Koresponden tidak mengetahui "..." maka klik button dibawah')
                     ->collapsed()
@@ -481,6 +498,9 @@ class Kuesioner1Resource extends Resource
                     ->rowIndex(),
                 TextColumn::make('nama')
                     ->label('Nama Responden')
+                    ->searchable(),
+                TextColumn::make('daerah.nama')
+                    ->label('Daerah')
                     ->searchable(),
                 TextColumn::make('role')
                     ->badge()
