@@ -65,7 +65,15 @@ class Kuesioner1Resource extends Resource
                             ->label('Relasi Daerah')
                             ->placeholder('-- Pilih Daerah --')  
                             ->relationship('daerah','nama')
-                            ->native(false),
+                            ->native(false)
+                            ->createOptionForm([
+                                TextInput::make('nama')
+                                    ->required(),
+                                TextInput::make('jarak')
+                                    ->default(0),
+                                TextInput::make('populasi')
+                                    ->default(0)
+                            ]),
 
                             
                         Select::make('role_id')
@@ -539,7 +547,7 @@ class Kuesioner1Resource extends Resource
                     ->color('success')
                     ->exports([
                         ExcelExport::make()
-                            ->fromForm()
+                            ->fromTable()
                     ]),
                 ExportAction::make()
                 ->exports([
