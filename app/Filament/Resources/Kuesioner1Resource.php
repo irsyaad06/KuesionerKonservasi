@@ -79,7 +79,7 @@ class Kuesioner1Resource extends Resource
                         Select::make('role_id')
                             ->required()
                             ->label('Role Responden')
-                            ->placeholder('-- Pilih Daerah --')  
+                            ->placeholder('-- Pilih Role --')  
                             ->relationship('role','nama_role')
                             ->native(false)
                             ->createOptionForm([
@@ -96,17 +96,52 @@ class Kuesioner1Resource extends Resource
                     ->collapsed()
                     ->schema([
                         Actions::make([
-                            Action::make('No')
-                                ->label('Tidak Mengetahui')
-                                ->icon('mdi-exclamation-thick')
-                                ->action(function (Set $set) {
-                                    $set('q1', 'Tidak');
-                                    $set('q2', 'Tidak');
+                            Action::make('Yes')
+                            ->label('Mengetahui')
+                            ->icon('mdi-check-circle-outline')
+                            ->color('success')
+                            ->action(function (Set $set) {
+                                $set('q1', 'Ya');
+                                $set('q2', 'Ya');
+                                $set('q3', 'Ya');
+                                $set('q4', 'Ya');
+                                $set('q5', 'Ya');
+                                $set('q6', 'Ya');
+                                $set('q7', 'Ya');
+                                $set('q8', 'Ya');
+                                $set('q9', 'Ya');
+                                $set('q10', 'Ya');
+                                $set('q11', 'Ya');
+                                $set('q12', 'Ya');
+                                $set('q13', 'Ya');
+                                $set('q14', 'Ya');
+                                $set('ket1', '');
+                                $set('ket2', '');
+                                $set('ket3', '');
+                                $set('ket4', '');
+                                $set('ket5', '');
+                                $set('ket6', '');
+                                $set('ket7', '');
+                                $set('ket8', '');
+                                $set('ket9', '');
+                                $set('ket10', '');
+                                $set('ket11', '');
+                                $set('ket12', '');
+                                $set('ket13', '');
+                                $set('ket14', '');
+                            }),
+                        Action::make('No')
+                            ->label('Tidak Mengetahui')
+                            ->icon('mdi-alpha-x-circle-outline')
+                            ->color('danger')
+                            ->action(function (Set $set) {
+                                $set('q1', 'Tidak');
+                                $set('q2', 'Tidak');
                                     $set('q3', 'Tidak');
                                     $set('q4', 'Tidak');
-                                    $set('q5', 'Tidak');
+                                    $set('q5', '');
                                     $set('q6', 'Tidak');
-                                    $set('q7', 'Tidak');
+                                    $set('q7', '');
                                     $set('q8', 'Tidak');
                                     $set('q9', 'Tidak');
                                     $set('q10', 'Tidak');
@@ -129,6 +164,8 @@ class Kuesioner1Resource extends Resource
                                     $set('ket13', 'NIHIL');
                                     $set('ket14', 'NIHIL');
                                 }),
+                           
+                                
                         ]),
                     ])
                     ->columns(2),
