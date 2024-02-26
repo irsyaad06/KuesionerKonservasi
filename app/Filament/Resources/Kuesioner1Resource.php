@@ -81,7 +81,12 @@ class Kuesioner1Resource extends Resource
                             ->label('Role Responden')
                             ->placeholder('-- Pilih Daerah --')  
                             ->relationship('role','nama_role')
-                            ->native(false),
+                            ->native(false)
+                            ->createOptionForm([
+                                TextInput::make('nama_role')
+                                    ->required(),
+                            ]),
+
                             
                             
                     ])
