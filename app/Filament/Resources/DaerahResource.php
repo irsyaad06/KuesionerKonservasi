@@ -37,8 +37,8 @@ class DaerahResource extends Resource
                     ->description('')
                     ->schema([
                         TextInput::make('nama')
-                            ->label('Nama Daerah')
-                            ->placeholder('Masukkan Nama Daerah')
+                            ->label('Asal Daerah')
+                            ->placeholder('Masukkan Asal Daerah Koresponden')
                             ->columnSpanFull(),
                         TextInput::make('jarak')
                             ->label('Jarak Daerah')

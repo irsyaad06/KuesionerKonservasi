@@ -62,28 +62,32 @@ class Kuesioner1Resource extends Resource
                             ->placeholder('Masukkan Nama Responden !'),
                         Select::make('daerah_id')
                             ->required()
-                            ->label('Relasi Daerah')
+                            ->label('Asal Daerah')
                             ->placeholder('-- Pilih Daerah --')  
                             ->relationship('daerah','nama')
                             ->native(false)
                             ->createOptionForm([
                                 TextInput::make('nama')
-                                    ->required(),
+                                    ->required()
+                                    ->placeholder('Masukkan Asal Daerah Koresponden'),
                                 TextInput::make('jarak')
-                                    ->default(0),
+                                    ->default(0)
+                                    ->placeholder('Masukkan Jarak Daerah terhadap tempat Konservasi'),
                                 TextInput::make('populasi')
                                     ->default(0)
+                                    ->placeholder('Masukkan Jumlah Populasi di Daerah tersebut')
                             ]),
 
                             
                         Select::make('role_id')
+        ->relationship('role','nama_role')
                             ->required()
                             ->label('Role Responden')
                             ->placeholder('-- Pilih Role --')  
-                            ->relationship('role','nama_role')
                             ->native(false)
                             ->createOptionForm([
                                 TextInput::make('nama_role')
+                                    ->placeholder('Masukkan Role Koresponden')
                                     ->required(),
                             ]),
 
