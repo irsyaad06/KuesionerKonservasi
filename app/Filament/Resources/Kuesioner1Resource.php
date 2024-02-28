@@ -29,8 +29,11 @@ use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Set;
+use Filament\Forms\Components\FileUpload;
+
 
 use App\Filament\Resources\Closure;
+use Filament\Tables\Columns\ImageColumn;
 
 class Kuesioner1Resource extends Resource
 {
@@ -45,9 +48,9 @@ class Kuesioner1Resource extends Resource
     protected static ?string $pluralModelLabel = 'Kuesioner Observasi';
 
     public static function getTotalCount(): int
-{
-    return Kuesioner1::count();
-}
+    {
+        return Kuesioner1::count();
+    }
 
     public static function form(Form $form): Form
     {
@@ -63,8 +66,8 @@ class Kuesioner1Resource extends Resource
                         Select::make('daerah_id')
                             ->required()
                             ->label('Asal Daerah')
-                            ->placeholder('-- Pilih Daerah --')  
-                            ->relationship('daerah','nama')
+                            ->placeholder('-- Pilih Daerah --')
+                            ->relationship('daerah', 'nama')
                             ->native(false)
                             ->createOptionForm([
                                 TextInput::make('nama')
@@ -78,12 +81,12 @@ class Kuesioner1Resource extends Resource
                                     ->placeholder('Masukkan Jumlah Populasi di Daerah tersebut')
                             ]),
 
-                            
+
                         Select::make('role_id')
-        ->relationship('role','nama_role')
+                            ->relationship('role', 'nama_role')
                             ->required()
                             ->label('Role Responden')
-                            ->placeholder('-- Pilih Role --')  
+                            ->placeholder('-- Pilih Role --')
                             ->native(false)
                             ->createOptionForm([
                                 TextInput::make('nama_role')
@@ -91,56 +94,55 @@ class Kuesioner1Resource extends Resource
                                     ->required(),
                             ]),
 
-                            
-                            
+
+
                     ])
                     ->columns(2),
                 Section::make('Shortcut Button')
                     ->description('Jika Koresponden tidak mengetahui "..." maka klik button dibawah')
-                    ->collapsed()
                     ->schema([
                         Actions::make([
                             Action::make('Yes')
-                            ->label('Mengetahui')
-                            ->icon('mdi-check-circle-outline')
-                            ->color('success')
-                            ->action(function (Set $set) {
-                                $set('q1', 'Ya');
-                                $set('q2', 'Ya');
-                                $set('q3', 'Ya');
-                                $set('q4', 'Ya');
-                                $set('q5', 'Ya');
-                                $set('q6', 'Ya');
-                                $set('q7', 'Ya');
-                                $set('q8', 'Ya');
-                                $set('q9', 'Ya');
-                                $set('q10', 'Ya');
-                                $set('q11', 'Ya');
-                                $set('q12', 'Ya');
-                                $set('q13', 'Ya');
-                                $set('q14', 'Ya');
-                                $set('ket1', '');
-                                $set('ket2', '');
-                                $set('ket3', '');
-                                $set('ket4', '');
-                                $set('ket5', '');
-                                $set('ket6', '');
-                                $set('ket7', '');
-                                $set('ket8', '');
-                                $set('ket9', '');
-                                $set('ket10', '');
-                                $set('ket11', '');
-                                $set('ket12', '');
-                                $set('ket13', '');
-                                $set('ket14', '');
-                            }),
-                        Action::make('No')
-                            ->label('Tidak Mengetahui')
-                            ->icon('mdi-alpha-x-circle-outline')
-                            ->color('danger')
-                            ->action(function (Set $set) {
-                                $set('q1', 'Tidak');
-                                $set('q2', 'Tidak');
+                                ->label('Mengetahui')
+                                ->icon('mdi-check-circle-outline')
+                                ->color('success')
+                                ->action(function (Set $set) {
+                                    $set('q1', 'Ya');
+                                    $set('q2', 'Ya');
+                                    $set('q3', 'Ya');
+                                    $set('q4', 'Ya');
+                                    $set('q5', 'Ya');
+                                    $set('q6', 'Ya');
+                                    $set('q7', 'Ya');
+                                    $set('q8', 'Ya');
+                                    $set('q9', 'Ya');
+                                    $set('q10', 'Ya');
+                                    $set('q11', 'Ya');
+                                    $set('q12', 'Ya');
+                                    $set('q13', 'Ya');
+                                    $set('q14', 'Ya');
+                                    $set('ket1', '');
+                                    $set('ket2', '');
+                                    $set('ket3', '');
+                                    $set('ket4', '');
+                                    $set('ket5', '');
+                                    $set('ket6', '');
+                                    $set('ket7', '');
+                                    $set('ket8', '');
+                                    $set('ket9', '');
+                                    $set('ket10', '');
+                                    $set('ket11', '');
+                                    $set('ket12', '');
+                                    $set('ket13', '');
+                                    $set('ket14', '');
+                                }),
+                            Action::make('No')
+                                ->label('Tidak Mengetahui')
+                                ->icon('mdi-alpha-x-circle-outline')
+                                ->color('danger')
+                                ->action(function (Set $set) {
+                                    $set('q1', 'Tidak');
+                                    $set('q2', 'Tidak');
                                     $set('q3', 'Tidak');
                                     $set('q4', 'Tidak');
                                     $set('q5', '');
@@ -168,14 +170,13 @@ class Kuesioner1Resource extends Resource
                                     $set('ket13', 'NIHIL');
                                     $set('ket14', 'NIHIL');
                                 }),
-                           
-                                
+
+
                         ]),
                     ])
                     ->columns(2),
                 Section::make('Form A (Terbuka)')
                     ->description('')
-                    ->collapsed()
                     ->schema([
                         Fieldset::make()
                             ->schema([
@@ -291,7 +292,6 @@ class Kuesioner1Resource extends Resource
 
                 Section::make('Form B (Terbuka)')
                     ->description('')
-                    ->collapsed()
                     ->schema([
 
                         Fieldset::make()
@@ -405,7 +405,6 @@ class Kuesioner1Resource extends Resource
 
                 Section::make('Form C (Tertutup)')
                     ->description('')
-                    ->collapsed()
                     ->schema([
                         Fieldset::make()
                             ->schema([
@@ -488,7 +487,6 @@ class Kuesioner1Resource extends Resource
 
                         Fieldset::make()
                             ->schema([
-
                                 Radio::make('q19')
                                     ->options([
                                         '1' => '1. Sangat Negatif',
@@ -528,17 +526,28 @@ class Kuesioner1Resource extends Resource
                     ])
                     ->columns(1),
 
+                Section::make()
+                    ->description('')
+                    ->schema([
+                        FileUpload::make('image')
+                            ->image()
+                            ->preserveFilenames()
+                            ->disk('public')
+                            ->openable()
+                            ->previewable()
+                            ->columnSpanFull()
+                    ])
             ]);
     }
 
-    
+
 
 
     public static function table(Table $table): Table
     {
         return $table
             // ->defaultGroup('role_id')
-       
+
             ->groups([
                 Group::make('role.nama_role')
                     ->titlePrefixedWithLabel(false)
@@ -552,7 +561,7 @@ class Kuesioner1Resource extends Resource
                     ->date()
                     ->label('Tanggal diinput ')
                     ->collapsible(),
-    
+
 
             ])
             ->columns([
@@ -573,12 +582,19 @@ class Kuesioner1Resource extends Resource
                     // })
                     ->searchable()
                     ->alignCenter(),
+
+                ImageColumn::make('image')
+                    ->disk('public')
+                    ->width(100)
+                    ->height(100)  
+                    ->square()
+                    ->visibility('private')
             ])
             ->filters([
                 SelectFilter::make('role_id')
-                    ->relationship('role','nama_role'),
-                    SelectFilter::make('daerah_id')
-                    ->relationship('daerah','nama')
+                    ->relationship('role', 'nama_role'),
+                SelectFilter::make('daerah_id')
+                    ->relationship('daerah', 'nama')
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -596,9 +612,9 @@ class Kuesioner1Resource extends Resource
                             ->fromTable()
                     ]),
                 ExportAction::make()
-                ->exports([
-                  ExcelExport::make()->withWriterType(\Maatwebsite\Excel\Excel::CSV),
-                  ])
+                    ->exports([
+                        ExcelExport::make()->withWriterType(\Maatwebsite\Excel\Excel::CSV),
+                    ])
                     ->label('CSV')
                     ->icon('mdi-file-document-outline')
                     ->color('danger')
@@ -606,9 +622,9 @@ class Kuesioner1Resource extends Resource
                         ExcelExport::make()
                             ->fromForm()
                     ])
-                    
-                    
-                    
+
+
+
 
             ])
             ->bulkActions([
