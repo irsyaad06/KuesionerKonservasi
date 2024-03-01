@@ -88,7 +88,7 @@ class Kuesioner1Resource extends Resource
                             ->relationship('role', 'nama_role')
                             // ->options(RoleResource::all()->pluck('role', 'nama_role'))
                             // ->toArray()
-                            ->searchable()
+                            // ->searchable()
                             ->required()
                             ->label('Role Responden')
                             ->placeholder('-- Pilih Role --')
@@ -540,8 +540,7 @@ class Kuesioner1Resource extends Resource
                             ->disk('public')
                             ->openable()
                             ->previewable()
-                            ->columnSpanFull()
-                            
+                            ->columnSpanFull(),
                     ])
             ]);
     }

@@ -9,7 +9,7 @@ use Flowframe\Trend\TrendValue;
 
 class PostsChart extends ChartWidget
 {
-    protected static ?string $heading = 'Grafik Responden yang diDapat';
+    protected static ?string $heading = 'Grafik Responden yang didapat';
 
     public ?string $activeFilter = 'today';
 

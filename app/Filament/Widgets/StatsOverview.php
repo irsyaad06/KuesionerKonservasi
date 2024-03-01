@@ -22,12 +22,12 @@ class StatsOverview extends BaseWidget
                 ->color('success')
                 ->chart([]),
         
-            Stat::make('Daerah yang terdaftar', Daerah::count())
+            Stat::make('Daerah Yang Terdaftar', Daerah::count())
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
                 // ->color('success')
                 // ->chart([7, 3, 4, 5, 6, 3, 5, 3])
                 ,
-            Stat::make('Daerah yang terdaftar', Role::count())
+            Stat::make('Role Yang Terdaftar', Role::count())
             ->descriptionIcon('heroicon-m-arrow-trending-up')
             // ->color('success')
             // ->chart([7, 3, 4, 5, 6, 3, 5, 3])
