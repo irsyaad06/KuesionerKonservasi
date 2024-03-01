@@ -57,7 +57,7 @@ class Kuesioner1 extends Model
         'ket19',
         'ket20',
         'image',
-        'original_file_name',
+
         
 
     ];

@@ -56,7 +56,7 @@ return new class extends Migration
             $table->string('ket18')->nullable();
             $table->string('ket19')->nullable();
             $table->string('ket20')->nullable();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

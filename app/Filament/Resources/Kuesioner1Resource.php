@@ -35,6 +35,8 @@ use Filament\Forms\Components\FileUpload;
 use App\Filament\Resources\Closure;
 use Filament\Tables\Columns\ImageColumn;
 
+
+
 class Kuesioner1Resource extends Resource
 {
     protected static ?string $model = Kuesioner1::class;
@@ -84,6 +86,9 @@ class Kuesioner1Resource extends Resource
 
                         Select::make('role_id')
                             ->relationship('role', 'nama_role')
+                            // ->options(RoleResource::all()->pluck('role', 'nama_role'))
+                            // ->toArray()
+                            // ->searchable()
                             ->required()
                             ->label('Role Responden')
                             ->placeholder('-- Pilih Role --')
@@ -535,7 +540,7 @@ class Kuesioner1Resource extends Resource
                             ->disk('public')
                             ->openable()
                             ->previewable()
-                            ->columnSpanFull()
+                            ->columnSpanFull(),
                     ])
             ]);
     }
@@ -592,9 +597,12 @@ class Kuesioner1Resource extends Resource
             ])
             ->filters([
                 SelectFilter::make('role_id')
-                    ->relationship('role', 'nama_role'),
+                    ->relationship('role', 'nama_role')
+                    ->native(false),
                 SelectFilter::make('daerah_id')
                     ->relationship('daerah', 'nama')
+                    ->native(false)
+                    ->searchable()
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

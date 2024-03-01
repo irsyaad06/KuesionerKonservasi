@@ -9,7 +9,11 @@ use Flowframe\Trend\TrendValue;
 
 class PostsChart extends ChartWidget
 {
-    protected static ?string $heading = 'Grafik Responden Perhari';
+    protected static ?string $heading = 'Grafik Responden yang didapat';
+
+    public ?string $activeFilter = 'today';
+
+    protected static ?int $sort = 1;
 
     protected function getData(): array
     {
@@ -20,12 +24,13 @@ class PostsChart extends ChartWidget
                 end: now()->endOfMonth(),
             )
             ->perDay()
-            ->count();
+            ->count()
+            ;
 
         return [
             'datasets' => [
                 [
-                    'label' => 'Blog posts',
+                    'label' => 'Responden',
                     'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
                 ],
             ],
