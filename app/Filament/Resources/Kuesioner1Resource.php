@@ -603,6 +603,7 @@ class Kuesioner1Resource extends Resource
                     ->height(100)  
                     ->square()
                     ->visibility('private')
+                    ->extraImgAttributes(['loading' => 'lazy'])
             ])
             ->filters([
                 SelectFilter::make('role_id')
