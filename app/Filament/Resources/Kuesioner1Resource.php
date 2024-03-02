@@ -584,11 +584,13 @@ class Kuesioner1Resource extends Resource
                     ->alignCenter(),
 
                 ImageColumn::make('image')
+                    ->label('Dokumentasi')
                     ->disk('public')
                     ->width(100)
                     ->height(100)  
                     ->square()
                     ->visibility('private')
+                    ->extraImgAttributes(['loading' => 'lazy']),
             ])
             ->filters([
                 SelectFilter::make('role_id')
