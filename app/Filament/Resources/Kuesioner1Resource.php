@@ -531,16 +531,23 @@ class Kuesioner1Resource extends Resource
                     ])
                     ->columns(1),
 
-                Section::make()
-                    ->description('')
+                Section::make('Dokumentasi')
+                    ->description('Wajib Melampirkan Dokumentasi')
                     ->schema([
-                        FileUpload::make('image')
-                            ->image()
-                            ->preserveFilenames()
-                            ->disk('public')
-                            ->openable()
-                            ->previewable()
-                            ->columnSpanFull(),
+                        Fieldset::make("Maximum Ukuran Foto 1 MB ! ")
+                            ->schema([
+                                FileUpload::make('image')
+                                ->label('')
+                                ->image()
+                                ->preserveFilenames()
+                                ->disk('public')
+                                ->openable()
+                                ->previewable()
+                                ->downloadable()
+                                ->columnSpanFull(),
+                            ])
+                            ->columns(2),
+
                     ])
             ]);
     }
@@ -574,23 +581,25 @@ class Kuesioner1Resource extends Resource
                     ->rowIndex(),
                 TextColumn::make('nama')
                     ->label('Nama Responden')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('daerah.nama')
                     ->label('Daerah')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('role.nama_role')
                     ->badge()
-                    // ->color(fn (string $state): string => match ($state) {
-                    //     'Petugas' => 'success',
-                    //     'Pengunjung' => 'danger',
-                    //     'Masyarakat ' => 'primary',
-                    // })
+                    ->color(fn (string $state): string => match ($state) {
+                        'Petugas' => 'success',
+                        'Pengunjung' => 'warning2',
+                        'Masyarakat' => 'primary',
+                    })
                     ->searchable()
                     ->alignCenter(),
 
                 ImageColumn::make('image')
                     ->disk('public')
-                    ->width(100)
+                    ->width(150)
                     ->height(100)  
                     ->square()
                     ->visibility('private')
