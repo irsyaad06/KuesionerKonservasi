@@ -126,20 +126,6 @@ class Kuesioner1Resource extends Resource
                                     $set('q12', 'Ya');
                                     $set('q13', 'Ya');
                                     $set('q14', 'Ya');
-                                    $set('ket1', '');
-                                    $set('ket2', '');
-                                    $set('ket3', '');
-                                    $set('ket4', '');
-                                    $set('ket5', '');
-                                    $set('ket6', '');
-                                    $set('ket7', '');
-                                    $set('ket8', '');
-                                    $set('ket9', '');
-                                    $set('ket10', '');
-                                    $set('ket11', '');
-                                    $set('ket12', '');
-                                    $set('ket13', '');
-                                    $set('ket14', '');
                                 }),
                             Action::make('No')
                                 ->label('Tidak Mengetahui')
@@ -150,9 +136,9 @@ class Kuesioner1Resource extends Resource
                                     $set('q2', 'Tidak');
                                     $set('q3', 'Tidak');
                                     $set('q4', 'Tidak');
-                                    $set('q5', '');
+                                    $set('q5', 'Tidak');
                                     $set('q6', 'Tidak');
-                                    $set('q7', '');
+                                    $set('q7', 'Tidak');
                                     $set('q8', 'Tidak');
                                     $set('q9', 'Tidak');
                                     $set('q10', 'Tidak');
@@ -160,20 +146,6 @@ class Kuesioner1Resource extends Resource
                                     $set('q12', 'Tidak');
                                     $set('q13', 'Tidak');
                                     $set('q14', 'Tidak');
-                                    $set('ket1', 'NIHIL');
-                                    $set('ket2', 'NIHIL');
-                                    $set('ket3', 'NIHIL');
-                                    $set('ket4', 'NIHIL');
-                                    $set('ket5', 'NIHIL');
-                                    $set('ket6', 'NIHIL');
-                                    $set('ket7', 'NIHIL');
-                                    $set('ket8', 'NIHIL');
-                                    $set('ket9', 'NIHIL');
-                                    $set('ket10', 'NIHIL');
-                                    $set('ket11', 'NIHIL');
-                                    $set('ket12', 'NIHIL');
-                                    $set('ket13', 'NIHIL');
-                                    $set('ket14', 'NIHIL');
                                 }),
 
 
