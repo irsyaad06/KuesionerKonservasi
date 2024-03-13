@@ -1,4 +1,7 @@
-<h1>HOW TO INSTALL & RUN THE APP<h1/>
+<h1>HOW TO INSTALL & RUN THE APP</h1>
+
+<br/>
+
 
 1.  Clone the repo
 
@@ -26,6 +29,8 @@ php artisan migrate
 ```sh
 php artisan db:seed
 ```
+
+<br/>
 
 6.  Run the project
 
