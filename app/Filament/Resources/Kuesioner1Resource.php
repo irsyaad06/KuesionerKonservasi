@@ -439,7 +439,7 @@ class Kuesioner1Resource extends Resource
                     ->schema([
                         Textarea::make('saran')
                         ->label('Saran Responden')
-                        ->required()
+                        // ->required()
                         ->placeholder('Masukkan Saran Responden'),        
                     ])
                     ->columns(2),
@@ -500,7 +500,12 @@ class Kuesioner1Resource extends Resource
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('jenis_kelamin')
-                    ->label('Jenis Kelamin'),
+                    ->label('Jenis Kelamin')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'Laki - Laki' => 'info',
+                        'Perempuan' => 'danger',
+                    }),
                 TextColumn::make('daerah.nama')
                     ->label('Daerah')
                     ->searchable()
@@ -518,8 +523,8 @@ class Kuesioner1Resource extends Resource
                 ImageColumn::make('image')
                     ->label('Dokumentasi')
                     ->disk('public')
-                    ->width(150)
-                    ->height(100)  
+                    ->width(120)
+                    ->height(70)  
                     ->square()
                     ->visibility('private')
                     ->extraImgAttributes(['loading' => 'lazy']),
