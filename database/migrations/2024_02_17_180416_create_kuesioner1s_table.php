@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nama');
             $table->foreignId('daerah_id');
             $table->foreignId('role_id');
+            $table->string('pekerjaan');
+            $table->string('jenis_kelamin');
             $table->string('q1');
             $table->string('q2');
             $table->string('q3');
