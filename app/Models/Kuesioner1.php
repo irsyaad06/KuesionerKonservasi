@@ -16,6 +16,8 @@ class Kuesioner1 extends Model
         'nama',
         'role_id',
         'daerah_id',
+        'pekerjaan',
+        'jenis_kelamin',
         'q1',
         'q2',
         'q3',

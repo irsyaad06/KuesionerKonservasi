@@ -65,6 +65,17 @@ class Kuesioner1Resource extends Resource
                         TextInput::make('nama')
                             ->required()
                             ->placeholder('Masukkan Nama Responden !'),
+                        Radio::make('jenis_kelamin')
+                            ->options([
+                                'Perempuan' => 'Perempuan',
+                                'Laki - Laki' => 'Laki - Laki',
+                            ])
+                            ->inline()
+                            ->inlineLabel(false)
+                            ,
+                        TextInput::make('pekerjaan')
+                            ->required()
+                            ->placeholder('Masukkan Pekerjaan Responden !'),
                         Select::make('daerah_id')
                             ->required()
                             ->label('Asal Daerah')
@@ -93,6 +104,7 @@ class Kuesioner1Resource extends Resource
                             ->label('Role Responden')
                             ->placeholder('-- Pilih Role --')
                             ->native(false)
+                            ->columnSpanFull()
                             ->createOptionForm([
                                 TextInput::make('nama_role')
                                     ->placeholder('Masukkan Role Koresponden')
@@ -422,7 +434,16 @@ class Kuesioner1Resource extends Resource
                             ->columns(2),
                     ])
                     ->columns(1),
-
+                Section::make('')
+                    ->description('')
+                    ->schema([
+                        Textarea::make('saran')
+                        ->label('Saran Responden')
+                        ->required()
+                        ->placeholder('Masukkan Saran Responden'),        
+                    ])
+                    ->columns(2),
+                
                 Section::make('Dokumentasi')
                     ->description('Wajib Melampirkan Dokumentasi')
                     ->schema([
@@ -475,6 +496,11 @@ class Kuesioner1Resource extends Resource
                     ->label('Nama Responden')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('pekerjaan')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('jenis_kelamin')
+                    ->label('Jenis Kelamin'),
                 TextColumn::make('daerah.nama')
                     ->label('Daerah')
                     ->searchable()
