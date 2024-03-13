@@ -126,20 +126,6 @@ class Kuesioner1Resource extends Resource
                                     $set('q12', 'Ya');
                                     $set('q13', 'Ya');
                                     $set('q14', 'Ya');
-                                    $set('ket1', '');
-                                    $set('ket2', '');
-                                    $set('ket3', '');
-                                    $set('ket4', '');
-                                    $set('ket5', '');
-                                    $set('ket6', '');
-                                    $set('ket7', '');
-                                    $set('ket8', '');
-                                    $set('ket9', '');
-                                    $set('ket10', '');
-                                    $set('ket11', '');
-                                    $set('ket12', '');
-                                    $set('ket13', '');
-                                    $set('ket14', '');
                                 }),
                             Action::make('No')
                                 ->label('Tidak Mengetahui')
@@ -150,9 +136,9 @@ class Kuesioner1Resource extends Resource
                                     $set('q2', 'Tidak');
                                     $set('q3', 'Tidak');
                                     $set('q4', 'Tidak');
-                                    $set('q5', '');
+                                    $set('q5', 'Tidak');
                                     $set('q6', 'Tidak');
-                                    $set('q7', '');
+                                    $set('q7', 'Tidak');
                                     $set('q8', 'Tidak');
                                     $set('q9', 'Tidak');
                                     $set('q10', 'Tidak');
@@ -160,20 +146,6 @@ class Kuesioner1Resource extends Resource
                                     $set('q12', 'Tidak');
                                     $set('q13', 'Tidak');
                                     $set('q14', 'Tidak');
-                                    $set('ket1', 'NIHIL');
-                                    $set('ket2', 'NIHIL');
-                                    $set('ket3', 'NIHIL');
-                                    $set('ket4', 'NIHIL');
-                                    $set('ket5', 'NIHIL');
-                                    $set('ket6', 'NIHIL');
-                                    $set('ket7', 'NIHIL');
-                                    $set('ket8', 'NIHIL');
-                                    $set('ket9', 'NIHIL');
-                                    $set('ket10', 'NIHIL');
-                                    $set('ket11', 'NIHIL');
-                                    $set('ket12', 'NIHIL');
-                                    $set('ket13', 'NIHIL');
-                                    $set('ket14', 'NIHIL');
                                 }),
 
 
@@ -192,10 +164,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('1. Apakah mengetahui adanya lembaga konservasi penyu? '),
-                                TextArea::make('ket1')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                         Fieldset::make()
@@ -208,10 +176,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('2. Apakah mengetahui kapan lembaga konservasi didirikan? '),
-                                TextArea::make('ket2')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
 
@@ -224,10 +188,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('3. Apakah mengetahui cakupan wilayah konservasi? '),
-                                TextArea::make('ket3')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
 
@@ -240,10 +200,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('4. Pernahkah melihat/menyaksikan langsung kegiatan konservasi? '),
-                                TextArea::make('ket4')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                         Fieldset::make()
@@ -255,10 +211,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('5. Apakah mengetahui alasan didirikannya lembaga konservasi? '),
-                                TextArea::make('ket5')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                         Fieldset::make()
@@ -270,10 +222,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('6. Apakah mengetahui cara kerja lembaga konservasi? '),
-                                TextArea::make('ket6')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                         Fieldset::make()
@@ -285,10 +233,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('7. Apakah mengetahui lembaga konservasi lain? '),
-                                TextArea::make('ket7')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                     ])
@@ -308,10 +252,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('1. Apakah memiliki teman/keluarga yang terlibat kegiatan konservasi? '),
-                                TextArea::make('ket8')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                         Fieldset::make()
@@ -323,10 +263,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('2. Apakah pernah mendapat undangan kegiatan konservasi? '),
-                                TextArea::make('ket9')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                         Fieldset::make()
@@ -338,10 +274,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('3. Apakah pernah terlibat kegiatan konservasi? '),
-                                TextArea::make('ket10')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                         Fieldset::make()
@@ -353,10 +285,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('4. Apakah punya minat bergabung dalam kegiatan konservasi? '),
-                                TextArea::make('ket11')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                         Fieldset::make()
@@ -368,10 +296,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('5. Apakah mengetahui adanya kegiatan rutin konservasi? '),
-                                TextArea::make('ket12')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                         Fieldset::make()
@@ -383,10 +307,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('6. Apakah mengetahui waktu & lokasi diselenggarakan? '),
-                                TextArea::make('ket13')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                         Fieldset::make()
@@ -398,10 +318,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('7. Apakah kegiatan konservasi berkesan? '),
-                                TextArea::make('ket14')
-                                    ->autosize()
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                     ])
@@ -424,10 +340,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('1. Apakah menyetujui keberadaan lembaga konservasi? '),
-                                TextArea::make('ket15')
-                                    ->rows(7)
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
                         Fieldset::make()
@@ -443,10 +355,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('2. Apa tanggapan mengenai kegiatan konservasi yang telah diadakan? '),
-                                TextArea::make('ket16')
-                                    ->rows(7)
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
 
@@ -463,10 +371,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('3. Seberapa efektif keterlibatan masyarakat sekitar? '),
-                                TextArea::make('ket17')
-                                    ->rows(7)
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
 
@@ -483,10 +387,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('4. Adakah gangguan yang dialami selama ini terkait keberadaan lembaga konservasi? '),
-                                TextArea::make('ket18')
-                                    ->rows(7)
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
 
@@ -502,10 +402,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('5. Apakah memiliki usulan atau harapan terhadap kegiatan konservasi? '),
-                                TextArea::make('ket19')
-                                    ->rows(7)
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
                             ])
                             ->columns(2),
 
@@ -521,10 +417,6 @@ class Kuesioner1Resource extends Resource
                                     ])
                                     ->required()
                                     ->label('6. Adakah keuntungan yang didapat selama ini terkait keberadaan lembaga konservasi? '),
-                                TextArea::make('ket20')
-                                    ->rows(7)
-                                    ->label('Keterangan')
-                                    ->placeholder('Keterangan'),
 
                             ])
                             ->columns(2),

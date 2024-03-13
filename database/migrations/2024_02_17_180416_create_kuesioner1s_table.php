@@ -36,27 +36,8 @@ return new class extends Migration
             $table->string('q18');
             $table->string('q19');
             $table->string('q20');
-            $table->string('ket1')->nullable();
-            $table->string('ket2')->nullable();
-            $table->string('ket3')->nullable();
-            $table->string('ket4')->nullable();
-            $table->string('ket5')->nullable();
-            $table->string('ket6')->nullable();
-            $table->string('ket7')->nullable();
-            $table->string('ket8')->nullable();
-            $table->string('ket9')->nullable();
-            $table->string('ket10')->nullable();
-            $table->string('ket11')->nullable();
-            $table->string('ket12')->nullable();
-            $table->string('ket13')->nullable();
-            $table->string('ket14')->nullable();
-            $table->string('ket15')->nullable();
-            $table->string('ket16')->nullable();
-            $table->string('ket17')->nullable();
-            $table->string('ket18')->nullable();
-            $table->string('ket19')->nullable();
-            $table->string('ket20')->nullable();
             $table->string('image')->nullable();
+            $table->string('saran')->nullable();
             $table->timestamps();
         });
     }
