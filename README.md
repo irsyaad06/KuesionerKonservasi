@@ -1,4 +1,4 @@
-`HOW TO INSTALL & RUN THE APP`
+<h1>HOW TO INSTALL & RUN THE APP<h1/>
 
 1.  Clone the repo
 
