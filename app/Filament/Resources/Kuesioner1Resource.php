@@ -70,6 +70,7 @@ class Kuesioner1Resource extends Resource
                                 'Perempuan' => 'Perempuan',
                                 'Laki - Laki' => 'Laki - Laki',
                             ])
+                            ->required()
                             ->inline()
                             ->inlineLabel(false)
                             ,
@@ -440,12 +441,13 @@ class Kuesioner1Resource extends Resource
                         Textarea::make('saran')
                         ->label('Saran Responden')
                         ->required()
-                        ->placeholder('Masukkan Saran Responden'),        
+                        ->placeholder('Masukkan Saran Responden')
+                        ->required(),        
                     ])
                     ->columns(2),
                 
                 Section::make('Dokumentasi')
-                    ->description('Wajib Melampirkan Dokumentasi')
+                    ->description('Wajib Melampirkan Dokumentasi!')
                     ->schema([
                         Fieldset::make("Maximum Ukuran Foto 1 MB ! ")
                             ->schema([
