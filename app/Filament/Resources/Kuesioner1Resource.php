@@ -439,7 +439,7 @@ class Kuesioner1Resource extends Resource
                     ->schema([
                         Textarea::make('saran')
                         ->label('Saran Responden')
-                        // ->required()
+                        ->required()
                         ->placeholder('Masukkan Saran Responden'),        
                     ])
                     ->columns(2),
