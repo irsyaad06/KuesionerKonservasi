@@ -59,6 +59,7 @@ class PenyuPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->favicon(asset('images/logs.png'));
     }
 }
