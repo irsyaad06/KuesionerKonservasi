@@ -20,17 +20,18 @@ class StatsOverview extends BaseWidget
             Stat::make('Total Responden', Kuesioner1::count())
                 ->descriptionIcon('mdi-home-group')
                 ->color('success')
-                ->chart([]),
+                ->chart([])
+                ->chart([1, 3, 6, 2, 7, 4, 2, 1]),
         
             Stat::make('Daerah Yang Terdaftar', Daerah::count())
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
-                // ->color('success')
-                // ->chart([7, 3, 4, 5, 6, 3, 5, 3])
+                ->color('warning')
+                ->chart([6, 2, 5, 7, 1, 2, 1, 1])
                 ,
             Stat::make('Role Yang Terdaftar', Role::count())
             ->descriptionIcon('heroicon-m-arrow-trending-up')
-            // ->color('success')
-            // ->chart([7, 3, 4, 5, 6, 3, 5, 3])
+            ->color('info')
+            ->chart([1,2,1])
             ,
         ];
     }
